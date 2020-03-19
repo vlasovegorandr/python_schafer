@@ -1,0 +1,186 @@
+PART 2
+
+string methods
+    'this'.find('s') finds first index of s in the string, i.e. 3
+    'thisss'.count('s') - counts 's's -- 3
+    'this'.find('z') -- -1 since z is not in the str
+    if string = 'hi egor' string = string.replace('hi', 'hello') -- 'hello egor'
+    string = '{}, {}, hello'.format('hey', 'hi') -- hey, hi, hello
+    
+dir(variable) kinda shows all methods you can use to interact with this variable
+
+help(str) shows the docs on strings, help(str.lower) shows docs only for 'lower' method
+
+PART 3 
+
+type(variable) -- its type
+type(3) - <class 'int'>
+
+// -- floor division
+** -- exponent -- 3 ** 3 == 27
+% -- 9%2 == 1 remainder of the division, used to tell if num is even or odd
+num += 1 -- num == 2, actually //=, %=, **= also work (but look like shit)
+abs(-3) == 3
+round(3.76, 1) == 3.8, round(3.76) = 4
+>=, <=
+casting - changing the type of var, like int(), str(), float()
+
+
+PART 4
+
+list[-1] -- last index, negative indexex count from the end
+[:3] - first three, [3:] not including first three, [:] all
+
+https://stackoverflow.com/questions/16641119/why-does-append-always-return-none-in-python
+
+list.insert(position_in_list, what_to_insert)
+list.extend(what_to_add_to_the_list) adds something to the end of the first list
+list.append(list_2) -- [0,1,2,[3,4]]
+list.extend(list_2) -- [0,1,2,3,4]
+[1,2,3].remove(2) -- [1,3]
+list.pop() removes last item by default and returns the popped item
+[1,2,3].pop() returns 3
+[1,2,3].reverse() returns [3,2,1]
+list.sort() sorts in ascending order or alphabetically
+list.sort(reverse=True) does the opposite
+sorted(list) -- returns a new list that is sorted
+sorted(list, reverse=True) also works
+list.index(what_to_look_for, starting_index, stopping_index)
+1 in [1,2,3] -- True, 4 in [1,2,3] -- False
+
+for item in list --- item is just a variable and can be called anything
+enumerate(['a','b','c']) returns [(0,'a'), (1,'b'), (2,'c')]
+
+enumerate(list, start = 1) starts counting from 1 and not from 0
+enumerate(['a','b','c'], start=1) returns [(1,'a'), (2,'b'), (3,'c')]
+
+lets say string = ['this', 'is', 'me']
+', '.join(string) will return 'this, is, me'
+'this is me'.split(' ') will return ['this', 'is', 'me']
+
+tuples
+
+if we have list_1 and list_2 = list_1
+then changing list_1 like list_1[0] = 'blah' will also make list_2's first elem == 'blah'
+they're the same mutable object
+
+tuple_1[0] = 'blah' doesn't work -- 'tuple' object does not support item assignment
+
+mutable == can be mutated (changed)
+
+
+sets
+
+sets get rid of duplicates
+so printing {1,2,3,1,2,1,2} will only print {1,2,3}
+sets are used to tell if value is part of the set
+so doing -- 1 in {1,2,3} would run faster than doing the same with a list
+
+set_1.intersection(set_2) shows only items common for both sets
+set_1.difference(set_2) shows only items that set_1 does have and set_2 doesn't
+so
+{1,2,3}.intersection({3,4,5}) would return {3}
+and {1,2,3}.difference({3,4,5}) would return {1,2}
+
+set_1.union(set_2) combines both sets removing duplicates
+so {1,2,3}.union({2,3,4,5}) would return {1,2,3,4,5}
+
+semi-useful stuff
+{1,2,3} | {2,3,4} -- {1,2,3,4}
+{1,2,3} & {2,3,4} -- {2,3}
+{1,2,3} - {2,3,4} -- {1}
+{1,2,3} ^ {2,3,4} -- {1,4}
+
+
+
+PART 5
+
+DICTiONARIES
+
+dict keys can be of any immutable types
+dict syntax = {'key_1': 'value_1', 'key_2': 2, 3: 'value_3'}
+say the dict_1 is {'one': 1, 'two': 2, 'three':3}
+dict_1['one'] returns 1
+dict_1[4] throws key_error
+dict_1.get(4) returns None
+dict_1.get(4, 'Not Found') returns 'Not Found'
+dict_1[4] = 'four' adds 4: 'four' to the dict
+dict_1['key_1'] = smth updates 'key_1' value to smth
+
+dict_1.update(arg) takes dictionary as an argument that contains everything we want to add or update
+dict_1.update('key_1': 111, 'pizza': 'yes!')
+
+del dict_1['key_1'] --  can be used to delete value of 'key_1' key
+just like pop
+pop also can be used on dicts
+len() shows how much key-value pairs the dict has
+keys() returns all the keys
+values() returns values
+items() returns pairs
+
+
+PART 6 
+
+CONDITIONALS and booleans
+
+'is' checks that two objects have the same id in memory
+id(item) shows item's id in memory
+'None' evaluates to False
+0 evaluates to False, any other numbers = True
+'', (), [] - empty collections eval to False
+' ' is not empty (has whitespace)
+{} empty dict also eval to False
+
+PART 7 
+
+LOOPS
+
+range(10) is all numbers from 0-9
+range(starting_point, stopping_point)
+so range (2,5) is 2,3,4
+
+
+PART 8 
+
+FUNCTIONS
+
+if it doesn't have a return statement it returns 'None'
+functions are so code can be reused
+think of it like a black box, it takes something in (args) and gives something out (return)
+and you don't have to know what's inside
+
+if a function returns a string you can treat function call -- func() -- as a string
+like use func().upper() or other type methods
+
+during function definition we can say
+random_func(arg = radnom_default_value) to provide a default value for a param if we don't specify a value when calling
+
+required args have to come first, then positional args
+*args -- can be used to specify any number of positional arguments
+**kwargs -- keyword arguments
+
+*iterable -- unpacking is used to pass iterable items as arguments to a function
+* is for unpacking iter values
+** is for unpacking keyword values
+using * on a dict returns keys only
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
